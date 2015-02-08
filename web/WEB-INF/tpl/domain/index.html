@@ -1,0 +1,51 @@
+<#include "../common/_layout.html"/> <@layout>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Domains</h3>
+	</div>
+	<div class="panel-body">
+	
+	<table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Domain</th>
+                        <th>Team</th>
+                        <th>AppName</th>
+                        <th>Operation</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <#list ds as o>
+                        <tr>
+                            <td><a target="_blank" href="http://${o.domain}">${o.domain}</a></td>
+                            <td>
+                            	${o.team_name}
+                            	<#if (me.id == o.creator)>
+                            	<a href="/domain/edit/${o.id}"><span class="glyphicon glyphicon-edit"></span></a>
+                            	</#if>
+                            </td>
+                            <td>
+                            	<#if o.app_id == 0>
+                            	<a href="/domain/bind/${o.id}">bind app</a>
+                            	<#else>
+                            	${o.app_name}
+                            	<a href="/domain/bind/${o.id}"><span class="glyphicon glyphicon-edit"></span></a>
+                            	</#if>
+                            </td>
+                           	<td>
+                            	<a href="javascript:delete_domain('${o.id}');"><span class="glyphicon glyphicon-remove"></span></a>
+                            </td>
+                        </tr>
+                    </#list>
+                    </tbody>
+                </table>
+	
+	</div>
+</div>
+
+<div>
+	<a href="/domain/create" class="btn btn-primary">Create Domain</a>
+</div>
+
+</@layout>

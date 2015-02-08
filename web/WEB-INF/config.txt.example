@@ -1,0 +1,12 @@
+jdbcUrl = jdbc:mysql://127.0.0.1/dash?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+user = dinp
+password =
+devMode = false
+memcacheAddrs = 127.0.0.1:11211
+memcachePrefix = dash:
+uicInternal = http://uic.com
+uicExternal = http://uic.com
+builder = http://build.com
+server = http://127.0.0.1:1980
+paasDomain = apps.io
+token = same-to-uic

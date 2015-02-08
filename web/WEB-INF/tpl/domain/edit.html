@@ -1,0 +1,29 @@
+<#include "../common/_layout.html"/> <@layout>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">edit domain: ${d.domain}</h3>
+	</div>
+	<div class="panel-body">
+		<div class="form-group">
+			<label for="team">Belong to Team(<a href="${uic}/team/create"
+				target="_blank">Create Team</a>):
+			</label>
+			<select id="team" class="form-control">
+			<#list ts as t>
+				<#if (d.team_id == t.id)>
+				<option value="${t.id}-${t.name}" selected="selected">${t.name}</option>
+				<#else>
+				<option value="${t.id}-${t.name}">${t.name}</option>
+				</#if>
+			</#list>
+			</select>
+		</div>
+		<input type="hidden" id="domain_id" value="${d.id}">
+		<button type="button" class="btn btn-primary" id="sub"
+			onclick="edit_domain();">Submit</button>
+		<a href="/domain" class="btn btn-warning">Cancel</a>
+	</div>
+</div>
+
+</@layout>

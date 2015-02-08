@@ -1,0 +1,54 @@
+<#include "common/_layout.html"/> <@layout>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Applications</h3>
+	</div>
+	<div class="panel-body">
+	
+	<table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Memory(in MB)</th>
+                        <th>Instance</th>
+                        <th>Team</th>
+                        <th>Operation</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <#list apps as a>
+                        <tr>
+                            <td><a target="_blank" href="http://${a.name}.${paasDomain}">${a.name}</a></td>
+                            <td>${a.memory}</td>
+                            <td>${a.instance} total</td>
+                            <td>
+                            	${a.team_name}
+                            </td>
+                            <td>
+                                <a href="/app/deploy/${a.id}">deploy</a>
+                                <span class="cut-line">¦</span>
+                                <a href="/app/scale/${a.id}">scale</a>
+                                <span class="cut-line">¦</span>
+                                <a href="/app/instance/${a.id}">instances</a>
+                                <span class="cut-line">¦</span>
+                                <a href="/app/env/${a.id}">env</a>
+                                <span class="cut-line">¦</span>
+                                <a href="/app/history/${a.id}">history</a>
+                                <span class="cut-line">¦</span>
+                                <a href="/app/edit/${a.id}"><span class="glyphicon glyphicon-edit"></span></a>
+                                <a href="javascript:del_app('${a.id}');"><span class="glyphicon glyphicon-remove"></span></a>
+                            </td>
+                        </tr>
+                    </#list>
+                    </tbody>
+                </table>
+	
+	</div>
+</div>
+
+<div>
+	<a class="btn btn-primary" href="/app/create">create app</a>
+</div>
+
+</@layout>

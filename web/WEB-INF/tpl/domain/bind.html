@@ -1,0 +1,27 @@
+<#include "../common/_layout.html"/> <@layout>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">${d.domain} bind app: </h3>
+	</div>
+	<div class="panel-body">
+		<div class="form-group">
+			<label for="app_id">App:</label>
+			<select id="app_id" class="form-control">
+			<#list apps as o>
+				<#if (d.app_id == o.id)>
+				<option value="${o.id}" selected="selected">${o.name}</option>
+				<#else>
+				<option value="${o.id}">${o.name}</option>
+				</#if>
+			</#list>
+			</select>
+		</div>
+		<input type="hidden" id="domain_id" value="${d.id}">
+		<button type="button" class="btn btn-primary"
+			onclick="bind_app();">Submit</button>
+		<a href="/domain" class="btn btn-warning">Cancel</a>
+	</div>
+</div>
+
+</@layout>

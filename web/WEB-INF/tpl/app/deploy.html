@@ -1,0 +1,39 @@
+<#include "../common/_layout.html"/> <@layout>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">deploy ${app.name}:</h3>
+	</div>
+	<div class="panel-body">
+		
+		<div class="form-group">
+			<label for="memory">每个实例分配多大内存，单位MB：</label>
+			<input type="text" id="memory" class="form-control" value="${app.memory}"/>
+		</div>
+		
+		<div class="form-group">
+			<label for="instance">要部署的实例数目：</label>
+			<input type="text" id="instance" class="form-control" value="${app.instance}"/>
+		</div>
+		
+		<div class="form-group">
+			<label for="resume">备忘，强烈推荐填写，回滚的时候知道各个历史版本的作用：</label>
+			<input type="text" id="resume" class="form-control" value="${(history.resume)!}"/>
+		</div>
+		
+		<div class="form-group">
+			<label for="image">image地址，没有？去<a href="${builder}">编配平台</a>生成一个：</label>
+			<input type="text" id="image" class="form-control" value="${(history.image)!}"/>
+		</div>
+		
+		<input type="hidden" id="app_id" value="${app.id}">
+		<button type="button" class="btn btn-primary" id="sub"
+			onclick="deploy_app();">Submit</button>
+		<a href="/" class="btn btn-warning">Cancel</a>
+		
+		
+	</div>
+</div>
+
+
+</@layout>

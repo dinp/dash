@@ -1,0 +1,46 @@
+<#include "../common/_layout.html"/> <@layout>
+<script>
+function refresh_instances() {
+	$.getJSON("/api/instances/${app.id}", {}, function(json) {
+		$("#tbody").empty();
+		$.each(json, function(index, value) {
+			$("#tbody").append("<tr>"
+					+ "<td>"+index+"</td>"
+					+ "<td>"+value.Id+"</td>"
+					+ "<td>"+value.Ip+"</td>"
+					+ "<td>"+value.Ports[0].PublicPort+"</td>"
+					+ "<td>"+value.Status+"</td>"
+				+ "</tr>");
+		});
+	});
+}
+
+$(function() {
+	refresh_instances();
+});
+</script>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">running instances of <a style="text-decoration: underline;" href="http://${app.name}.${paasDomain}" target="_blank">${app.name}</a>:</h3>
+	</div>
+	<div class="panel-body">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>ID</th>
+					<th>IP</th>
+					<th>Port</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody id="tbody">
+				
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<a class="btn btn-primary" href="javascript:refresh_instances();">refresh</a>
+
+</@layout>

@@ -1,0 +1,38 @@
+<#include "../common/_layout.html"/> <@layout>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">build history of ${app.name}:</h3>
+	</div>
+	<div class="panel-body">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Image</th>
+					<th>Resume</th>
+					<th>CreateAt</th>
+					<th>Operation</th>
+				</tr>
+			</thead>
+			<tbody>
+				<#list list as x>
+				<tr>
+					<td>${x.image}</td>
+					<td>${x.resume}</td>
+					<td>${x.create_at}</td>
+					<td><a href="/app/deploy/${x.app_id}?history=${x.id}">use</a>
+					<span class="cut-line">¦</span>
+					<a href="javascript:del_history('${x.id}');">delete</a></td>
+				</tr>
+				</#list>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="alert alert-warning" role="alert">
+	之前build产出的image都展示在了这里，不同的image可能记不住是哪个版本什么功能了，所以build的时候最好写一写备注（Resume）信息。<br>
+	一般保留最新的四五次记录用于回滚就可以了，之前的可以通过右侧的【delete】按钮删除，少了看起来清爽一些:-)
+</div>
+
+</@layout>
