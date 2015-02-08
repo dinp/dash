@@ -5,7 +5,7 @@ Dashboard
 
 - 我们发现很多用户还是习惯web界面
 - 命令行工具需要安装，而浏览器无需安装
-- 人力问题 ：（
+- 人力问题
 
 dashboard采用 [UIC](http://ulricqin.com/project/uic/) 作为单点登录系统，故而，要run dashboard需要提前部署UIC。
 
